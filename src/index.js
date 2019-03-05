@@ -16,4 +16,3 @@ const AppRouter = (
 );
 
 ReactDOM.render(AppRouter, document.getElementById('root'))
-// serviceWorker() 
