@@ -12,9 +12,9 @@ import "semantic-ui-css/semantic.min.css";
 const AppRouter = (
     <BrowserRouter>
         <Switch>
-            <Route path="/" exact={true} component={App} />
             <Route path="/speech" component={Speech} />
             <Route path="/personality" component={Personality} />
+            <Route path="/" exact={true} component={App} />
         </Switch>
     </BrowserRouter>
 );

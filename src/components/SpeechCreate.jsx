@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import { Container, Row, Col, Form, FormGroup, Input, Label, Button } from 'reactstrap'
+import { Container, Form, FormGroup, Input, Label, Button } from 'reactstrap'
 import { Editor, EditorState } from 'draft-js'
 import { stateToHTML } from 'draft-js-export-html'
 import 'draft-js/dist/Draft.css';
@@ -8,7 +8,6 @@ import 'draft-js/dist/Draft.css';
 class SpeechCreate extends Component {
     constructor(props) {
         super(props);
-
 
         this.state = {
             editorState: EditorState.createEmpty(),
@@ -23,8 +22,9 @@ class SpeechCreate extends Component {
 
         const html = stateToHTML(this.state.editorState.getCurrentContent());
         const title = this.state.title;
-
-        axios.post('http://localhost:3000/speech', { title, html })
+        const personality = this.props.match.params.personalityId;
+        console.log({ title, html, personality });
+        axios.post('http://localhost:3000/speech', { title, html, personality })
         .then(response => {
             console.log(response.data)
         })
@@ -34,16 +34,7 @@ class SpeechCreate extends Component {
     render() {
       return (
         <Container>
-          <Row>
-            <Col md="3"></Col>
-            <Col md="6">
               <h2><center>Create Speech</center></h2>
-            </Col>
-            <Col md="3"></Col>
-          </Row>
-          <Row>
-            <Col md="3"></Col>
-            <Col md="6">
               <Form onSubmit={this.saveSpeech}>
                 <FormGroup>
                     <Label>Title</Label>
@@ -60,9 +51,6 @@ class SpeechCreate extends Component {
                 <Button type="submit" value="Submit">Save</Button>
                 
               </Form>
-            </Col>
-            <Col md="3"></Col>
-          </Row>
         </Container>
       );
     }

@@ -8,8 +8,8 @@ const Speech = ({match}) => {
     return ( 
         <BrowserRouter>
             <Switch>
-                <Route path={`${match.url}/create`} component={SpeechCreate} />
                 <Route exact path={`${match.url}/:id`} component={SpeechView} />
+                <Route path={`${match.url}/create/:personalityId`} component={SpeechCreate} />
             </Switch>
         </BrowserRouter>
     );

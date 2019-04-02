@@ -4,7 +4,6 @@ import PersonalityView from './PersonalityView'
 import PersonalityList from './PersonalityList'
 
 const Personality = ({match}) => {
-    console.log("Personality", match.params.id);
     return ( 
         <BrowserRouter>
             <Switch>
